@@ -110,6 +110,20 @@ This pack is designed to be installed alongside [schubergphilis/agents.md](https
 | sbp-why-we-do-this | Explain the reasoning behind SBP engineering conventions |
 | terraform | Generic Terraform/OpenTofu module, testing, CI/CD, and state guidance |
 
+## Alternative: Addy Osmani's Agent Skills
+
+[addyosmani/agent-skills](https://github.com/addyosmani/agent-skills) is a different pack covering the same
+general engineering lifecycle as this one — spec-writing, planning, TDD, code review, debugging, security,
+observability, and so on. Unlike `sbp-*` above, it isn't a stricter mission-critical variant of this pack;
+it's a same-altitude alternative with its own opinions and a different skill-naming scheme
+(`test-driven-development` vs. this pack's `tdd`, `debugging-and-error-recovery` vs. `diagnosing-bugs`,
+`code-review-and-quality` vs. `code-review`, `source-driven-development` vs. `research`, and so on — no
+directory names collide, but several skills cover the same ground under different names).
+
+Because neither pack is more authoritative than the other for a shared trigger (e.g. "write a test first"
+could reasonably fire either pack's TDD skill), installing both at once means picking a lane rather than
+running both — treat them as alternatives to choose between per-repo, not a combined toolkit.
+
 ## License
 
 MIT, see [LICENSE](./LICENSE).
