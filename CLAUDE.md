@@ -1,8 +1,8 @@
-# pocock-skills
+# Agent instructions for pocock-skills
 
-A personal fork of [mattpocock/skills](https://github.com/mattpocock/skills), kept for daily use across
-Claude Code and Codex. It is edited in place, not published or distributed — there is no plugin, no
-release process, and no public docs site here. See [README.md](./README.md) for what the skills do.
+> This file (`CLAUDE.md`) is the canonical agent configuration. `AGENTS.md` is a symlink to this file.
+
+This file configures agents working on this repository itself. It is not meant to be copied into other projects or into a global agent configuration; the reusable assets are the skills in `skills/`, not this file.
 
 ## Skill layout
 
