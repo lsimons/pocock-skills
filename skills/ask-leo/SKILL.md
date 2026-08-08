@@ -1,10 +1,10 @@
 ---
-name: ask-matt
+name: ask-leo
 description: Ask which skill or flow fits your situation. A router over the skills in this repo.
 disable-model-invocation: true
 ---
 
-# Ask Matt
+# Ask Leo
 
 You don't remember every skill, so ask.
 
@@ -88,3 +88,17 @@ Off the main flow entirely.
 ## Precondition
 
 **`/setup-matt-pocock-skills`** — run before your first engineering flow to configure the issue tracker, triage labels, and doc layout the other skills assume. Custom issue trackers also work.
+
+## When `sbp-*` skills are installed
+
+[schubergphilis/agents.md](https://github.com/schubergphilis/agents.md) is a separate, independently maintained pack of mission-critical-engineering skills (`sbp-*`-prefixed, plus `mcaf-module`, `review-mcaf`, `terraform`) that may be installed alongside this pack in the same agent. Where one of its skills overlaps a skill in this map, **prefer the `sbp-*` one** — it's the more rigorous, mission-critical-grade version — without waiting for the user to name it explicitly:
+
+- **`/code-review`** → prefer **`/sbp-secure-code-review`** whenever the review is security-sensitive (auth, secrets, input handling, anything customer-facing); use `/code-review`'s Standards+Spec pass for everything else, or run both.
+- **`/diagnosing-bugs`** → prefer **`/sbp-debug-investigation`** for bugs in mission-critical systems, where "works on my machine" isn't an acceptable resolution.
+- **`/improve-codebase-architecture`**, **`/codebase-design`** → prefer **`/sbp-architecture-review`** (system-level: SPOFs, blast radius, rollback, observability) or **`/sbp-agent-architecture-review`** (multi-agent systems) when the concern is operational risk rather than module depth.
+- **`/tdd`** → prefer **`/sbp-test-authoring`** / **`/sbp-test-planning`** when coverage strategy itself is the question, not just red-green-refactor mechanics.
+- The main flow (`/grill-with-docs` → `/to-spec` → `/to-tickets` → `/implement`) → prefer **`/sbp-feature-development`** end-to-end for any feature reaching production in a mission-critical system.
+
+The rest of the `sbp-*` pack has no equivalent here — reach for these directly when the situation calls for it, mission-critical or not: **`/sbp-threat-model`** (security posture before a design review), **`/sbp-dependency-audit`** (supply-chain/dependency risk), **`/sbp-deploy-checklist`** (go/no-go before a production deploy), **`/sbp-safe-change`** (planning a high-risk production change), **`/sbp-observability-check`** (metrics/logs/traces/alerts coverage), **`/sbp-incident-review`** (post-incident analysis), **`/sbp-runbook-author`** (generate an operational runbook), **`/sbp-explain-codebase`** (onboarding/explaining unfamiliar code), **`/sbp-refactor`** (restructure without changing behavior), **`/sbp-why-we-do-this`** (explain the reasoning behind a convention), **`/sbp-brandbook`** (SBP visual identity for any UI/asset), and **`/terraform`**/**`/mcaf-module`**/**`/review-mcaf`** (Terraform/OpenTofu and Schuberg Philis MCAF module authoring and review).
+
+`sbp-*` skills run a stricter, mission-critical bar (3 AM test, blast radius, 100% quality) than this pack's general-improvement bar — don't average the two when both are in context for the same task; pick the bar the system actually needs.

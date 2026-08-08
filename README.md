@@ -7,6 +7,10 @@ Fork of [mattpocock/skills](https://github.com/mattpocock/skills), stripped down
 See [`CLAUDE.md`](./CLAUDE.md) for conventions (invocation policy, how skills reference each other) and
 the upstream sync procedure.
 
+If [schubergphilis/agents.md](https://github.com/schubergphilis/agents.md)'s `sbp-*` skills are also
+installed, they take precedence over this pack's overlapping equivalents (code review, debugging,
+architecture review, testing, feature development) — see [`ask-leo`](./skills/ask-leo/SKILL.md).
+
 ## Setup
 
 Run `/setup-matt-pocock-skills` once per repo you use these skills in. It will:
@@ -43,7 +47,7 @@ user-invoked skill may invoke model-invoked skills, but never another user-invok
 
 **User-invoked**
 
-- **[ask-matt](./skills/ask-matt/SKILL.md)** — Ask which skill or flow fits your situation. A router over the user-invoked skills in this repo.
+- **[ask-leo](./skills/ask-leo/SKILL.md)** — Ask which skill or flow fits your situation. A router over the user-invoked skills in this repo.
 - **[grill-with-docs](./skills/grill-with-docs/SKILL.md)** — Grilling session that also builds your project's domain model, sharpening terminology and updating `CONTEXT.md` and ADRs inline.
 - **[triage](./skills/triage/SKILL.md)** — Move issues through a state machine of triage roles.
 - **[improve-codebase-architecture](./skills/improve-codebase-architecture/SKILL.md)** — Scan a codebase for deepening opportunities, present them as a visual HTML report, then grill through whichever one you pick.

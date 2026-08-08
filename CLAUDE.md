@@ -40,10 +40,21 @@ but never another user-invoked one.
 
 ## The router
 
-[`ask-matt`](./skills/ask-matt/SKILL.md) maps every user-reachable skill and how they relate. Whenever you
-add, rename, remove, or change how a user-reachable skill fits the flows, re-read `ask-matt`'s `SKILL.md`
+[`ask-leo`](./skills/ask-leo/SKILL.md) maps every user-reachable skill and how they relate. Whenever you
+add, rename, remove, or change how a user-reachable skill fits the flows, re-read `ask-leo`'s `SKILL.md`
 and update it so the map stays accurate — a new skill it never mentions, or a stale one it still routes to,
 is a router that lies.
+
+## Coexisting with sbp-* skills
+
+[schubergphilis/agents.md](https://github.com/schubergphilis/agents.md) is a separate pack of
+mission-critical-engineering skills (`sbp-*`-prefixed, plus `mcaf-module`, `review-mcaf`, `terraform`) that
+may be installed alongside this pack in the same agent. No directory-name collisions, both are
+markdown-first and Skill-tool-invoked — they coexist without conflict. Where an `sbp-*` skill overlaps one
+here (code review, debugging, architecture review, testing, feature development), the `sbp-*` skill takes
+precedence — it's the more rigorous, mission-critical-grade version. See
+[`ask-leo`](./skills/ask-leo/SKILL.md)'s "When `sbp-*` skills are installed" section for the specific
+mapping; keep that section in sync if either pack's skill list changes.
 
 ## Writing a good SKILL.md
 
