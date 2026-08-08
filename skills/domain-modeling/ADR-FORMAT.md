@@ -1,8 +1,12 @@
 # ADR Format
 
-ADRs live in `docs/adr/` and use sequential numbering: `0001-slug.md`, `0002-slug.md`, etc.
+## Where ADRs live
 
-Create the `docs/adr/` directory lazily — only when the first ADR is needed.
+Check what the repo already has before picking a location — never stand up a second, competing decision-record system:
+
+- **`docs/adr/` already exists** — keep using it. Sequential numbering: `0001-slug.md`, `0002-slug.md`, etc.
+- **`docs/spec/` (or similarly-named directory) already exists as a numbered/indexed spec corpus** — an `SNN-<slug>.md` naming scheme (or similar) plus an index file listing entries by number and status — record the decision there instead, as a new entry in that same corpus, following its existing numbering, status vocabulary, and index-update convention. Specs already carry the "why did we do this" role in a repo like this; a separate `docs/adr/` would just duplicate it.
+- **Neither exists** — default to `docs/spec/`, not `docs/adr/`. Create it lazily, only when the first decision is needed: `docs/spec/S01-slug.md`, `docs/spec/S02-slug.md`, etc., zero-padded to at least two digits.
 
 ## Template
 
@@ -24,7 +28,7 @@ Only include these when they add genuine value. Most ADRs won't need them.
 
 ## Numbering
 
-Scan `docs/adr/` for the highest existing number and increment by one.
+Scan the decision-record directory (`docs/adr/` or `docs/spec/`, per "Where ADRs live" above) for the highest existing number and increment by one. If it has an index file, add a row to it.
 
 ## When to offer an ADR
 

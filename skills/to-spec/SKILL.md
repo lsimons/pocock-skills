@@ -16,7 +16,7 @@ The issue tracker and triage label vocabulary should have been provided to you �
 
 Check with the user that these seams match their expectations.
 
-3. Write the spec using the template below, then publish it to the project issue tracker. Apply the `ready-for-agent` triage label - no need for additional triage.
+3. Check whether the repo already runs its own numbered/indexed spec-doc convention — a directory like `docs/spec/` holding files such as `SNN-<slug>.md` or `NNN-<slug>.md`, with an index file (e.g. `000-specs.md`) listing them by number, title, and status. If so, follow that convention instead of the template below: use its file-naming/numbering scheme, its status vocabulary, and add an entry to its index — don't stand up a second, competing spec location. Otherwise write the spec using the template below, then publish it to the project issue tracker. Apply the `ready-for-agent` triage label - no need for additional triage.
 
 <spec-template>
 
