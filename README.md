@@ -1,10 +1,9 @@
 # Skills
 
-A personal fork of [mattpocock/skills](https://github.com/mattpocock/skills) — agent skills for real
-engineering, not vibe coding. Kept for daily use across Claude Code and Codex, edited in place, not
-published or distributed.
+**Agent skills for real engineering.**
 
-Each skill lives in `skills/<name>/`, self-contained with its own `SKILL.md` and any supporting files.
+Fork of [mattpocock/skills](https://github.com/mattpocock/skills), stripped down to skills only.
+
 See [`CLAUDE.md`](./CLAUDE.md) for conventions (invocation policy, how skills reference each other) and
 the upstream sync procedure.
 
