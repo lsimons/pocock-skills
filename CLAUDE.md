@@ -57,3 +57,42 @@ When a skill's job isn't obvious from its name, its `SKILL.md` should make two t
 Optionally cover prerequisites (a workspace it writes into, prior setup another skill provides) and
 whatever makes the skill's own approach click — its own vocabulary, the loop it runs, the artifact it
 produces. Skip anything that doesn't apply; there's no fixed template.
+
+## Syncing with upstream
+
+This fork has diverged from [mattpocock/skills](https://github.com/mattpocock/skills) in structure
+(flattened `skills/`, no plugin/release/docs machinery, no `agents/openai.yaml`), so upstream changes have
+to be hand-ported per skill rather than merged wholesale.
+
+1. Add the remote and fetch if not already set up:
+
+   ```
+   git remote get-url upstream >/dev/null 2>&1 || git remote add upstream https://github.com/mattpocock/skills.git
+   git fetch upstream
+   ```
+
+2. Find what changed upstream since the last sync: `git log --stat <last-sync-point>..upstream/main`. Use
+   the tag `upstream-sync-point` as `<last-sync-point>` if it exists; otherwise fall back to
+   `git merge-base HEAD upstream/main`.
+
+3. Walk the changed `skills/<name>/` directories one at a time (upstream paths are
+   `skills/<bucket>/<name>/`; this fork's are `skills/<name>/`). For each, port substantive content
+   changes — new guidance, fixed prose, behavior changes — and skip purely structural changes that don't
+   apply here (a file moving between buckets, a `docs/` page edit, an `agents/openai.yaml` update).
+
+4. If a change touches a file this fork duplicates per the self-containment rule above, port it to every
+   duplicate, not just the first one you find.
+
+5. After porting, move the `upstream-sync-point` tag to the commit you synced through and push it:
+
+   ```
+   git tag -f upstream-sync-point <commit>
+   git push origin upstream-sync-point --force
+   ```
+
+**Never ported** — this fork deliberately removed this surface, so upstream changes to it aren't
+relevant: `.claude-plugin/`, `.changeset/`, `CHANGELOG.md`, `package.json`/`package-lock.json`,
+`scripts/sync-plugin-version.mjs`, the release GitHub workflow, `docs/` and its writing-docs template,
+`.agents/install-block.md`, `.out-of-scope/`, per-skill `agents/openai.yaml`, the
+promoted/non-promoted bucket split, and anything specific to the `misc/`/`in-progress/` skills this fork
+dropped.

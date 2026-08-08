@@ -80,3 +80,11 @@ user-invoked skill may invoke model-invoked skills, but never another user-invok
 
 - **[grilling](./skills/grilling/SKILL.md)** — Interview the user relentlessly about a plan, decision, or idea until every branch of the design tree is resolved. The reusable interview primitive behind `grill-me`, `grill-with-docs`, `triage`, `wayfinder` and `improve-codebase-architecture`.
 - **[writing-for-agents](./skills/writing-for-agents/SKILL.md)** — Writing documents for agents: skills, AGENTS.md/CLAUDE.md, and any doc an agent reaches by a pointer.
+
+## License
+
+MIT, see [LICENSE](./LICENSE).
+
+## Contributing
+
+Please contribute [upstream](https://github.com/mattpocock/skills).
