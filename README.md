@@ -7,6 +7,9 @@ Fork of [mattpocock/skills](https://github.com/mattpocock/skills), stripped down
 See [`CLAUDE.md`](./CLAUDE.md) for conventions (invocation policy, how skills reference each other) and
 the upstream sync procedure.
 
+[lsimons/lsimons-skills](https://github.com/lsimons/lsimons-skills) is a downstream fork of this repo
+that I use myself.
+
 ## Setup
 
 Run `/setup-matt-pocock-skills` once per repo you use these skills in. It will:
