@@ -53,8 +53,9 @@ may be installed alongside this pack in the same agent. No directory-name collis
 markdown-first and Skill-tool-invoked — they coexist without conflict. Where an `sbp-*` skill overlaps one
 here (code review, debugging, architecture review, testing, feature development), the `sbp-*` skill takes
 precedence — it's the more rigorous, mission-critical-grade version. See
-[`ask-leo`](./skills/ask-leo/SKILL.md)'s "When `sbp-*` skills are installed" section for the specific
-mapping; keep that section in sync if either pack's skill list changes.
+[`ask-leo`](./skills/ask-leo/SKILL.md)'s "Coexisting with sbp/agents.md" section for the specific
+mapping; keep that section (and the matching table in README.md) in sync if either pack's skill list
+changes.
 
 ## Writing a good SKILL.md
 

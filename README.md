@@ -7,10 +7,6 @@ Fork of [mattpocock/skills](https://github.com/mattpocock/skills), stripped down
 See [`CLAUDE.md`](./CLAUDE.md) for conventions (invocation policy, how skills reference each other) and
 the upstream sync procedure.
 
-If [schubergphilis/agents.md](https://github.com/schubergphilis/agents.md)'s `sbp-*` skills are also
-installed, they take precedence over this pack's overlapping equivalents (code review, debugging,
-architecture review, testing, feature development) — see [`ask-leo`](./skills/ask-leo/SKILL.md).
-
 ## Setup
 
 Run `/setup-matt-pocock-skills` once per repo you use these skills in. It will:
@@ -83,6 +79,36 @@ user-invoked skill may invoke model-invoked skills, but never another user-invok
 
 - **[grilling](./skills/grilling/SKILL.md)** — Interview the user relentlessly about a plan, decision, or idea until every branch of the design tree is resolved. The reusable interview primitive behind `grill-me`, `grill-with-docs`, `triage`, `wayfinder` and `improve-codebase-architecture`.
 - **[writing-for-agents](./skills/writing-for-agents/SKILL.md)** — Writing documents for agents: skills, AGENTS.md/CLAUDE.md, and any doc an agent reaches by a pointer.
+
+## Coexisting with sbp/agents.md
+
+This pack is designed to be installed alongside [schubergphilis/agents.md](https://github.com/schubergphilis/agents.md), a separate agentskills.io-compliant pack aimed at mission-critical engineering. Both packs can live in `skills/` side by side without conflict — no directory names collide.
+
+**Prefer the matching `sbp-*` skill over the equivalent skill in this pack whenever it's installed and available.** The sbp skills carry mission-critical framing (blast radius, rollback paths, go/no-go gates, 3 AM runbooks) that this general-purpose pack doesn't attempt to match. See [`ask-leo`](./skills/ask-leo/SKILL.md) for the specific mapping.
+
+| sbp/agents.md skill | What It Does |
+|-------|-------------|
+| mcaf-module | Author or structurally review a Schuberg Philis MCAF Terraform module |
+| review-mcaf | Qualitative MCAF module review producing a good/bad/verdict report |
+| sbp-agent-architecture-review | Review multi-agent system designs for correctness, resilience, and safety |
+| sbp-architecture-review | Review system architecture for mission-critical concerns (SPOFs, blast radius, rollback) |
+| sbp-brandbook | Apply the Schuberg Philis visual brand identity to UI, documents, and design assets |
+| sbp-debug-investigation | Systematically investigate, reproduce, and fix bugs in mission-critical systems |
+| sbp-dependency-audit | Audit dependencies for supply-chain, bloat, and maintainability risk |
+| sbp-deploy-checklist | Verify rollback readiness and monitoring before production deploys; produces a go/no-go decision |
+| sbp-explain-codebase | Explain unfamiliar code, infrastructure, or architectural patterns in context |
+| sbp-feature-development | Build a new feature via TDD with mission-critical rigor |
+| sbp-incident-review | Blameless post-incident analysis producing a timeline, impact, root causes, and action items |
+| sbp-observability-check | Check the four pillars (metrics, logs, traces, alerts) against the 3 AM test |
+| sbp-refactor | Improve structure and readability without changing observable behavior |
+| sbp-runbook-author | Generate operational runbooks with diagnosis, resolution, and escalation steps |
+| sbp-safe-change | Plan a high-risk production change with risk classification and rollback triggers |
+| sbp-secure-code-review | Security review for mission-critical systems, framed by blast radius and customer impact |
+| sbp-test-authoring | Write tests that prove functionality and catch regressions |
+| sbp-test-planning | Design test coverage before writing code, including for existing untested code |
+| sbp-threat-model | Identify assets and attack surfaces, produce a prioritized threat matrix |
+| sbp-why-we-do-this | Explain the reasoning behind SBP engineering conventions |
+| terraform | Generic Terraform/OpenTofu module, testing, CI/CD, and state guidance |
 
 ## License
 

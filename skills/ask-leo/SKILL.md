@@ -89,16 +89,30 @@ Off the main flow entirely.
 
 **`/setup-matt-pocock-skills`** — run before your first engineering flow to configure the issue tracker, triage labels, and doc layout the other skills assume. Custom issue trackers also work.
 
-## When `sbp-*` skills are installed
+## Coexisting with sbp/agents.md
 
-[schubergphilis/agents.md](https://github.com/schubergphilis/agents.md) is a separate, independently maintained pack of mission-critical-engineering skills (`sbp-*`-prefixed, plus `mcaf-module`, `review-mcaf`, `terraform`) that may be installed alongside this pack in the same agent. Where one of its skills overlaps a skill in this map, **prefer the `sbp-*` one** — it's the more rigorous, mission-critical-grade version — without waiting for the user to name it explicitly:
+This map only routes to skills in this pack. If [schubergphilis/agents.md](https://github.com/schubergphilis/agents.md) is also installed, check its skills first for anything mission-critical (security review, architecture review, debugging, testing, feature development, production changes, incidents, Terraform) — they take precedence over the equivalent skill here, without waiting for the user to name them explicitly:
 
-- **`/code-review`** → prefer **`/sbp-secure-code-review`** whenever the review is security-sensitive (auth, secrets, input handling, anything customer-facing); use `/code-review`'s Standards+Spec pass for everything else, or run both.
-- **`/diagnosing-bugs`** → prefer **`/sbp-debug-investigation`** for bugs in mission-critical systems, where "works on my machine" isn't an acceptable resolution.
-- **`/improve-codebase-architecture`**, **`/codebase-design`** → prefer **`/sbp-architecture-review`** (system-level: SPOFs, blast radius, rollback, observability) or **`/sbp-agent-architecture-review`** (multi-agent systems) when the concern is operational risk rather than module depth.
-- **`/tdd`** → prefer **`/sbp-test-authoring`** / **`/sbp-test-planning`** when coverage strategy itself is the question, not just red-green-refactor mechanics.
-- The main flow (`/grill-with-docs` → `/to-spec` → `/to-tickets` → `/implement`) → prefer **`/sbp-feature-development`** end-to-end for any feature reaching production in a mission-critical system.
-
-The rest of the `sbp-*` pack has no equivalent here — reach for these directly when the situation calls for it, mission-critical or not: **`/sbp-threat-model`** (security posture before a design review), **`/sbp-dependency-audit`** (supply-chain/dependency risk), **`/sbp-deploy-checklist`** (go/no-go before a production deploy), **`/sbp-safe-change`** (planning a high-risk production change), **`/sbp-observability-check`** (metrics/logs/traces/alerts coverage), **`/sbp-incident-review`** (post-incident analysis), **`/sbp-runbook-author`** (generate an operational runbook), **`/sbp-explain-codebase`** (onboarding/explaining unfamiliar code), **`/sbp-refactor`** (restructure without changing behavior), **`/sbp-why-we-do-this`** (explain the reasoning behind a convention), **`/sbp-brandbook`** (SBP visual identity for any UI/asset), and **`/terraform`**/**`/mcaf-module`**/**`/review-mcaf`** (Terraform/OpenTofu and Schuberg Philis MCAF module authoring and review).
+- `mcaf-module` — author or structurally review a Schuberg Philis MCAF Terraform module
+- `review-mcaf` — qualitative MCAF module review producing a good/bad/verdict report
+- `sbp-agent-architecture-review` — review multi-agent system designs for correctness, resilience, and safety
+- `sbp-architecture-review` — review system architecture for mission-critical concerns — SPOFs, blast radius, rollback (instead of `/improve-codebase-architecture` / `/codebase-design` when the concern is operational risk, not module depth)
+- `sbp-brandbook` — apply the Schuberg Philis visual brand identity to UI, documents, and design assets
+- `sbp-debug-investigation` — investigate and fix bugs in mission-critical systems, where "works on my machine" isn't an acceptable resolution (instead of `/diagnosing-bugs`)
+- `sbp-dependency-audit` — audit dependencies for supply-chain, bloat, and maintainability risk
+- `sbp-deploy-checklist` — go/no-go production deploy checklist: rollback readiness, monitoring, change communication
+- `sbp-explain-codebase` — explain unfamiliar code, infrastructure, or architectural patterns in context
+- `sbp-feature-development` — build a feature via TDD with mission-critical rigor (instead of the main flow — `/grill-with-docs` → `/to-spec` → `/to-tickets` → `/implement` — for anything reaching production in a mission-critical system)
+- `sbp-incident-review` — blameless post-incident analysis: timeline, impact, root causes, action items
+- `sbp-observability-check` — four-pillars observability coverage check (metrics, logs, traces, alerts) against the 3 AM test
+- `sbp-refactor` — refactor without changing observable behavior
+- `sbp-runbook-author` — generate operational runbooks with diagnosis, resolution, and escalation steps
+- `sbp-safe-change` — plan a high-risk production change: risk classification, pre-flight checks, rollback triggers
+- `sbp-secure-code-review` — security review for mission-critical systems, framed by blast radius and customer impact (instead of `/code-review` whenever the review is security-sensitive — auth, secrets, input handling, anything customer-facing; run both when in doubt)
+- `sbp-test-authoring` — write tests that prove functionality and catch regressions (instead of `/tdd` when coverage strategy itself is the question, not just red-green-refactor mechanics)
+- `sbp-test-planning` — design test coverage before writing code, including for existing untested code
+- `sbp-threat-model` — identify assets and attack surfaces, produce a prioritized threat matrix
+- `sbp-why-we-do-this` — explain the reasoning behind SBP engineering conventions
+- `terraform` — generic Terraform/OpenTofu module, testing, CI/CD, and state guidance
 
 `sbp-*` skills run a stricter, mission-critical bar (3 AM test, blast radius, 100% quality) than this pack's general-improvement bar — don't average the two when both are in context for the same task; pick the bar the system actually needs.
