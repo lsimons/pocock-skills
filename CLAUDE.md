@@ -89,9 +89,10 @@ to be hand-ported per skill rather than merged wholesale.
    git fetch upstream
    ```
 
-2. Find what changed upstream since the last sync: `git log --stat <last-sync-point>..upstream/main`. Use
-   the tag `upstream-sync-point` as `<last-sync-point>` if it exists; otherwise fall back to
-   `git merge-base HEAD upstream/main`.
+2. Find what changed upstream since the last sync: `git log --stat <last-sync-point>..upstream/main`.
+   `<last-sync-point>` is `git merge-base HEAD upstream/main`, which is accurate as long as step 6 below
+   was run for the previous sync. The tag `upstream-sync-point` records the same commit as a readable
+   label; if the two disagree, trust the merge-base and re-point the tag.
 
 3. Walk the changed `skills/<name>/` directories one at a time (upstream paths are
    `skills/<bucket>/<name>/`; this fork's are `skills/<name>/`). For each, port substantive content
@@ -105,12 +106,22 @@ to be hand-ported per skill rather than merged wholesale.
 4. If a change touches a file this fork duplicates per the self-containment rule above, port it to every
    duplicate, not just the first one you find.
 
-5. After porting, move the `upstream-sync-point` tag to the commit you synced through and push it:
+5. Commit the ported content on its own, so the port is reviewable as a content diff.
+
+6. Then record the sync in git's history with a content-free merge, so the branch stops reporting as N
+   commits behind upstream and the next sync's merge-base is correct:
 
    ```
-   git tag -f upstream-sync-point <commit>
-   git push origin upstream-sync-point --force
+   git merge -s ours upstream/main
+   git tag -f upstream-sync-point <the upstream commit you synced through>
+   git push origin main && git push origin upstream-sync-point --force
    ```
+
+   `-s ours` keeps this fork's tree byte-for-byte and only adds the second parent. Run it **after** the
+   content port, never instead of it: on its own it would silently declare upstream's changes absorbed
+   while dropping them. The trade-off it accepts is that git will no longer surface unported upstream
+   paths as outstanding work, so reviving one later (promoting an `in-progress/` skill, say) means copying
+   it out of an upstream ref by hand.
 
 **Never ported**, because this fork deliberately removed this surface, so upstream changes to it aren't
 relevant: `.claude-plugin/`, `.changeset/`, `CHANGELOG.md`, `package.json`/`package-lock.json`,
