@@ -6,7 +6,7 @@ This file configures agents working on this repository itself. It is not meant t
 
 ## Prose style
 
-No em-dashes anywhere in this repo's prose (`SKILL.md` files, `README.md`, `CLAUDE.md`, `CONTEXT.md`, commit messages). Where a sentence reaches for one, rewrite it instead with a comma, colon, period, parentheses, or a conjunction, whichever the sentence actually wants; never do a blind character substitution. This matches upstream and keeps future syncs from fighting over punctuation.
+No em-dashes anywhere in this repo's prose (`SKILL.md` files, `README.md`, `CLAUDE.md`, `GLOSSARY.md`, commit messages). Where a sentence reaches for one, rewrite it instead with a comma, colon, period, parentheses, or a conjunction, whichever the sentence actually wants; never do a blind character substitution. This matches upstream and keeps future syncs from fighting over punctuation.
 
 ## Skill layout
 
